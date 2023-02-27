@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('CI') {
             steps {
-                git 'https://github.com/abdelkhalek97/Final-Task-Application.git'
+                git 'https://github.com/gassermohsen/DevOps-Challenge-Demo-Code'
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
@@ -21,7 +21,6 @@ pipeline {
                      withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
-                cd K8s-files/
                 kubectl create namespace app
                 kubectl apply -f deployment-redis.yml
                 kubectl apply -f redis-service.yml
