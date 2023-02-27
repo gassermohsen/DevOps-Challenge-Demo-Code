@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('CI') {
             steps {
-                git 'https://github.com/gassermohsen/DevOps-Challenge-Demo-Code'
+                git url:  'https://github.com/gassermohsen/DevOps-Challenge-Demo-Code' , branch: 'master'
                 withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
