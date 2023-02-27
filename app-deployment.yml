@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: abdelkhalek97/gcp-python
+        image: gassermohsen/app:v1  
         env:
         - name: REDIS_PORT
           value: "6379"
