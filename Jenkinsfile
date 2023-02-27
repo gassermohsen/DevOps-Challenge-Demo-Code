@@ -5,7 +5,7 @@ pipeline {
         stage('CI') {
             steps {
                 git 'https://github.com/gassermohsen/DevOps-Challenge-Demo-Code'
-                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
                 docker build -f Dockerfile --network host -t gassermohsen/app:v1 .
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('CD'){
             steps{
-                     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                     withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
                 kubectl create namespace app
