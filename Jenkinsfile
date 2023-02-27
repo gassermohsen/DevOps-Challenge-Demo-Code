@@ -9,7 +9,7 @@ pipeline {
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
                 docker build -f Dockerfile --network host -t gassermohsen/app:v1 .
-                docker push abdelkhalek97/app:v1
+                docker push gassermohsen/app:v1
                 """
             
             }
